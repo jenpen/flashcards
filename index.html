@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flashcards</title>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="style.js"></script>
+  <link rel="stylesheet" href="http://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- Flashcard page setup -->
+  <div class="card_setup">
+    <h1 id="deck_title">Flashcards Deck Title</h1>
+    <div id="card_index">Card 1 of x</div>
+  </div>
+
+<!-- Cards -->
+  <div class="card">
+    <div class="card_face">
+      <div id="card_text">Card Front Value Here</div>
+      <input type="checkbox">Got it right?</input>
+    </div>
+    <button type="button" id="prev_card_button">Previous Card</button>
+    <button type="button" id="next_card_button">Next Card</button>
+
+  </div>
+
+
+
+<!-- Make New Cards -->
+  <div class="new_cards">
+    <input type="text" id="new_front" placeholder="New Card Title"/>
+    <input type="text" id="new_back" placeholder="New Card Definition"/>
+    <button type="button" id="new_card_submit">Create New Card!</button>
+  </div>
+</body>
+</html>
