@@ -6,9 +6,10 @@ Requested Documentation:
 
 **Technologies Used:**
 HTML, CSS, jQuery, Javascript
-Linked resources include:
-* [normalize.css] (http://necolas.github.io/normalize.css/latest/normalize.css)
-* [minified jQuery] (https://code.jquery.com/jquery-2.1.4.min.js)
+
+- Linked resources include:
+    * [normalize.css] (http://necolas.github.io/normalize.css/latest/normalize.css)
+    * [minified jQuery] (https://code.jquery.com/jquery-2.1.4.min.js)
 
 **Approach taken:**
 *Initial considerations.*
