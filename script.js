@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-//using Constructor Function - was not able to pull a value from the object literal
+//used Constructor Function - was not able to pull a value from the object literal
   function Card (term, definition) {
     this.termValue = term;
     this.definitionValue = definition;
@@ -25,33 +25,18 @@ $(document).ready(function(){
 //Add a card
     cardAdd: function(term, definition) {
       this.cardArray.push( new Card (term, definition));
-      //this.cardText.html(term,definition);
-      console.log("cardAdd firing");
     },
 
 //Create the card position within the index. Update the card counter.
     cardUpdate: function() {
       var currentCard = this.cardArray[this.cardIndex];
-      console.log(currentCard.termValue);
-      console.log(currentCard.definitionValue);
       this.cardTerm.text(currentCard.termValue);
       this.cardDefinition.text(currentCard.definitionValue)
       this.cardDefinition.hide();
       this.cardPosition.html("Card " + (this.cardIndex + 1) + " of " + (this.cardArray.length));
-      //this.cardText.html(cardDeck.cardAdd); //show currentCard and the specified side of that card. Maybe use toggleClass.
-      // $.map(this.cardArray, function(definition, keyDefinition) {
-      //   console.log(definition);
-      //   return definition;
-      //})
-      console.log("cardUpdate Firing");
-      //console.log(Card.term);
     },
 
-// Get other side of the card
-    // cardFlip: function () {
-    //   this.cardSide = (this.cardSide + 1 ) % 2;
-    // },
-
+//Move through the cards -- Gold feature would be to randomize the order of the cards.
     cardNext: function (changeCard) {
       this.cardIndex += changeCard;
       if (this.cardIndex < 0) {
@@ -63,41 +48,48 @@ $(document).ready(function(){
     },
 
     cardClick: function () {
-      //this.cardFlip();
       this.cardUpdate();
-      this.cardDefinition.toggle();
-
-      console.log("I'm clicking!");
-
-      //})
+      this.cardDefinition.fadeToggle();
+      //Silver Feature: be able to hide cardTerm when cardDefinition is displayed then toggle back and forth on each click.
     },
 
 // Move between cards
     previousButton: function () {
       $("#prev_card_button").on("click", function () {
         cardDeck.cardNext(-1);
-        console.log("prev card firing")
       });
     },
 
     nextButton: function () {
       $("#next_card_button").on("click", function () {
         cardDeck.cardNext(1);
-        console.log("next card firing")
       });
     }
   };
 
-
-
 // My cards /////////////
 //  cardDeck.cardAdd(" Term  "," Definition ");
 
-  cardDeck.cardAdd(".HTML()","Get or set the HTML contents of an element");
+  cardDeck.cardAdd(".html()","Getter and Setter. Get the HTML content for the first element in the set of matched elements. Set HTML content for every matched element.");
   cardDeck.cardAdd("*","Selects all elements");
-  cardDeck.cardAdd(".class","Selects all elements with a specified class");
-  cardDeck.cardAdd("#id","Selects all elements with a specified ID");
-
+  cardDeck.cardAdd(".class","Selects all elements with a specified class.");
+  cardDeck.cardAdd("#id","Selects all elements with a specified ID.");
+  cardDeck.cardAdd("selector1, selector2, selectorN", "Multiple selectors select the combined results of all the specified selectors.");
+  cardDeck.cardAdd("parent > child","Child Selector: selects all direct child elements specified by \"child\" of elements specified by \"parent\".");
+  cardDeck.cardAdd(".attr()","Getter and Setter. Get the value of an attribute for the first element in the set of matched elements. Set one or more attributes for every matched element.");
+  cardDeck.cardAdd("removeAttr()","Removes an attribute from each element in the set of matched elements.");
+  cardDeck.cardAdd("val()","Gets the current value of the first element in teh set of matched elements or sets the value of every matched element.");
+  cardDeck.cardAdd(".addClass","Adds the specified class(es) to each element in the set of matched elements.");
+  cardDeck.cardAdd(".css()","Gets the value of a styled property for the first element in the set of matched elements or sets CSS properties for every matched element.");
+  cardDeck.cardAdd(":button","Selects all button elements and elements of type button.");
+  cardDeck.cardAdd(".eq()","Select the element at index\[n\] withing the matched set.");
+  cardDeck.cardAdd(".hide()","Hides the matched elements by setting display: none.");
+  cardDeck.cardAdd(".show()","Displays the matched elements.");
+  cardDeck.cardAdd(".toggle()","Displays or hides the matched elements.");
+  cardDeck.cardAdd(".click()","Binds an event listener to the \"click\" Javascript event, or triggers that event on an element.");
+  cardDeck.cardAdd("event.target","The \[target\] property can be the element that registered for the event or a descendent of it. Similar to \"this\", context is useful to determine if the event is being handled.");
+  cardDeck.cardAdd(".keyup()","Binds an event listener to the \"keyup\" Javascript event, or triggers that event on an element.");
+  cardDeck.cardAdd(".hover()","Binds an action to matched elements that is executed when the mouse pointer enters and leaves the elements.");
 
 ///////////////////////////
   cardDeck.cardUpdate();
@@ -107,7 +99,4 @@ $(document).ready(function(){
   $("#card_face").on("click", function() {
     cardDeck.cardClick()
     });
-
-  })
-
-//end of the document
+})
