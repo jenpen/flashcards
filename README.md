@@ -35,12 +35,13 @@ Initially wanted to use object literal statement to push values into my array, b
 * user story 4: user selector to indicate they have mastered the card. Feature undeveloped.
 * would like to use JSON to store card data
 
-**User Stories: **
+**User Stories:**
+
 1. As a user, I should be able to go between old cards and new cards so that I can access the breadth of content available. (Complete!)
 2. As a user, I should be able to enter new cards so that I can contribute to the information I am learning. (Gold feature!)
 3. As a user, I should be able to see if I have reviewed a card before so that I can keep track of my progress. (Gold feature!)
 4. As a user, I should have a self-selected indicator so that I can note if I am improving. (Gold feature!)
 5. As a user, I should have a counter so that I know how many cards I have reviewed. (Complete!)
 
-**Prototype**
+**Prototype:**
 ![jQuery Flashcards] (/flashcards_prototype_lf.png)
