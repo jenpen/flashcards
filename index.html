@@ -12,29 +12,32 @@
 <body>
 
 <!-- Flashcard page setup -->
-  <div class="card_setup">
+  <div id="card_setup">
     <h1 id="deck_title">Flashcards Deck Title</h1>
-    <div id="card_index">Card 1 of x</div>
+    <div id="card_index"></div>
   </div>
 
 <!-- Cards -->
-  <div class="card">
+  <div id="card">
     <div id="card_face">
-      <p id="card_text">Plug Example Text Here</p>
-      <input type="checkbox">Got it right?</input>
+      <div id="card_text">
+      </div>
+
+      <!-- Gold Feature - Checkbox
+      <input type="checkbox">Got it right?</input> -->
     </div>
-    <button type="button" id="prev_card_button">Previous Card</button>
-    <button type="button" id="next_card_button">Next Card</button>
+    <button id="prev_card_button">Previous Card</button>
+    <button id="next_card_button">Next Card</button>
 
   </div>
 
 
 
-<!-- Make New Cards -->
-  <div class="new_cards">
+<!-- Make New Cards Gold Feature -->
+  <!-- <div class="new_cards">
     <input type="text" id="new_front" placeholder="New Card Title"/>
     <input type="text" id="new_back" placeholder="New Card Definition"/>
     <button type="button" id="new_card_submit">Create New Card!</button>
-  </div>
+  </div> -->
 </body>
 </html>
