@@ -10,7 +10,7 @@ $(document).ready(function(){
 
 //Add a card
     cardAdd: function(term, definition) {
-      this.cardArray.push({term : term, definition : definition});
+      this.cardArray.push({keyTerm : term, keyDefinition : definition});
       this.cardText.html(term,definition);
       console.log("cardAdd firing");
     },
@@ -19,9 +19,12 @@ $(document).ready(function(){
     cardUpdate: function() {
       var currentCard = this.cardArray[this.cardIndex];
       this.cardPosition.html("Card " + (this.cardIndex + 1) + " of " + (this.cardArray.length));
-      this.cardText.html("something"); //show currentCard and the specified side of that card
-
-      console.log(currentCard);
+      //this.cardText.html(cardDeck.cardAdd); //show currentCard and the specified side of that card. Maybe use toggleClass.
+      $.map(this.cardArray, function(definition, keyDefinition) {
+        console.log(definition);
+        return definition;
+      })
+      console.log("cardUpdate Firing")
     },
 
 // Get other side of the card
@@ -45,12 +48,15 @@ $(document).ready(function(){
     previousButton: function () {
       $("#prev_card_button").on("click", function () {
         cardDeck.cardNext(-1);
+        console.log("prev card firing")
       });
     },
 
     nextButton: function () {
       $("#next_card_button").on("click", function () {
         cardDeck.cardNext(1);
+        console.log("next card firing")
+
       });
     }
   };
