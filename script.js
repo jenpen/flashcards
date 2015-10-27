@@ -1,40 +1,57 @@
 $(document).ready(function(){
 
+//using Constructor Function - was not able to pull a value from the object literal
+  function Card (term, definition) {
+    this.termValue = term;
+    this.definitionValue = definition;
+    this.display = function (side) {
+      console.log(this)
+      if (side === 0) {
+        return this.termValue;
+      } else {
+        return this.definitionValue;
+      }
+    };
+  }
+
   var cardDeck = {
     cardArray : [],
     cardIndex : 0,
     cardSide : 0,
     cardPosition : $("#card_index"),
-    cardFace : $("#card_face"),
-    cardText : $("#card_text"),
+    cardTerm : $("#card_term"),
+    cardDefinition : $("#card_definition"),
 
 //Add a card
     cardAdd: function(term, definition) {
-      this.cardArray.push({keyTerm : term, keyDefinition : definition});
-      this.cardText.html(term,definition);
+      this.cardArray.push( new Card (term, definition));
+      //this.cardText.html(term,definition);
       console.log("cardAdd firing");
     },
 
 //Create the card position within the index. Update the card counter.
     cardUpdate: function() {
       var currentCard = this.cardArray[this.cardIndex];
+      console.log(currentCard.termValue);
+      console.log(currentCard.definitionValue);
+      this.cardTerm.text(currentCard.termValue);
+      this.cardDefinition.text(currentCard.definitionValue)
+      this.cardDefinition.hide();
       this.cardPosition.html("Card " + (this.cardIndex + 1) + " of " + (this.cardArray.length));
       //this.cardText.html(cardDeck.cardAdd); //show currentCard and the specified side of that card. Maybe use toggleClass.
-      $.map(this.cardArray, function(definition, keyDefinition) {
-        console.log(definition);
-        return definition;
-      })
-      console.log("cardUpdate Firing")
+      // $.map(this.cardArray, function(definition, keyDefinition) {
+      //   console.log(definition);
+      //   return definition;
+      //})
+      console.log("cardUpdate Firing");
+      //console.log(Card.term);
     },
 
 // Get other side of the card
-    cardClick: function () {
-      this.cardText.on("click", function () {
-      console.log("I'm clicking!");
-      })
-    },
+    // cardFlip: function () {
+    //   this.cardSide = (this.cardSide + 1 ) % 2;
+    // },
 
-// Move between cards
     cardNext: function (changeCard) {
       this.cardIndex += changeCard;
       if (this.cardIndex < 0) {
@@ -45,6 +62,17 @@ $(document).ready(function(){
       this.cardUpdate();
     },
 
+    cardClick: function () {
+      //this.cardFlip();
+      this.cardUpdate();
+      this.cardDefinition.toggle();
+
+      console.log("I'm clicking!");
+
+      //})
+    },
+
+// Move between cards
     previousButton: function () {
       $("#prev_card_button").on("click", function () {
         cardDeck.cardNext(-1);
@@ -56,7 +84,6 @@ $(document).ready(function(){
       $("#next_card_button").on("click", function () {
         cardDeck.cardNext(1);
         console.log("next card firing")
-
       });
     }
   };
@@ -74,9 +101,13 @@ $(document).ready(function(){
 
 ///////////////////////////
   cardDeck.cardUpdate();
-  cardDeck.cardClick();
   cardDeck.previousButton();
   cardDeck.nextButton();
 
+  $("#card_face").on("click", function() {
+    cardDeck.cardClick()
+    });
+
+  })
+
 //end of the document
-})
