@@ -58,11 +58,21 @@ $(document).ready(function(){
       $("#prev_card_button").on("click", function () {
         cardDeck.cardNext(-1);
       });
+      $("body").keyup(function (evt) {
+        if (evt.keyCode === 37) {
+          cardDeck.cardNext(-1);
+        }
+      });
     },
 
     nextButton: function () {
       $("#next_card_button").on("click", function () {
         cardDeck.cardNext(1);
+      });
+      $("body").keyup(function (evt) {
+        if (evt.keyCode === 39) {
+          cardDeck.cardNext(1);
+        }
       });
     }
   };
@@ -94,8 +104,8 @@ $(document).ready(function(){
 ///////////////////////////
 
   // function userCard() {
-  //   var newTerm = $("#new_term");
-  //   var newDefinition = $("#new_definition");
+  //   var newTerm = $("#new_term").val();
+  //   var newDefinition = $("#new_definition").val();
   //   cardDeck.cardAdd(newTerm, newDefinition);
   //   console.log(cardDeck.cardArray.length);
   //   cardDeck.cardUpdate();
@@ -105,11 +115,15 @@ $(document).ready(function(){
   cardDeck.previousButton();
   cardDeck.nextButton();
 
-
-
   $("#card_face").on("click", function() {
-    cardDeck.cardClick()
+    cardDeck.cardClick();
     });
 
-  //$("#new_card_submit").on("click", userCard() );
+  $("body").keyup(function (evt) {
+    if (evt.keyCode === 13) {
+      cardDeck.cardClick();
+    }
+  });
+
+//$("#new_card_submit").on("click", userCard());
 })
