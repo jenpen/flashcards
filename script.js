@@ -36,7 +36,7 @@ $(document).ready(function() {
       this.cardPosition.html("Card " + (this.cardIndex + 1) + " of " + (this.cardArray.length));
     },
 
-    //Move through the cards -- Gold feature would be to randomize the order of the cards.
+    //Move through the cards -- Gold feature:  randomize the order of the cards.
     cardNext: function(changeCard) {
       this.cardIndex += changeCard;
       if (this.cardIndex < 0) {
@@ -56,6 +56,9 @@ $(document).ready(function() {
     },
 
     //User click if they know a card. Remove card from rotation.
+    //user checks box
+    //remove card from array
+    // usability note: need confirmation message to remove card. If user deselects checkbox, then card is not removed from array.
     userCheckbox: function () {
       $("#userConfirmKnows").hide();
       $("#userKnowsAnswer").click(function () {
@@ -89,7 +92,6 @@ $(document).ready(function() {
 
   // My cards /////////////
   //  cardDeck.cardAdd(" Term  "," Definition ");
-
   cardDeck.cardAdd(".html()", "Getter and Setter. Get the HTML content for the first element in the set of matched elements. Set HTML content for every matched element.");
   cardDeck.cardAdd("*", "Selects all elements");
   cardDeck.cardAdd(".class", "Selects all elements with a specified class.");
