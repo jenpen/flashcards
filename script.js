@@ -92,11 +92,24 @@ $(document).ready(function(){
   cardDeck.cardAdd(".hover()","Binds an action to matched elements that is executed when the mouse pointer enters and leaves the elements.");
 
 ///////////////////////////
+
+  // function userCard() {
+  //   var newTerm = $("#new_term");
+  //   var newDefinition = $("#new_definition");
+  //   cardDeck.cardAdd(newTerm, newDefinition);
+  //   console.log(cardDeck.cardArray.length);
+  //   cardDeck.cardUpdate();
+  // };
+
   cardDeck.cardUpdate();
   cardDeck.previousButton();
   cardDeck.nextButton();
 
+
+
   $("#card_face").on("click", function() {
     cardDeck.cardClick()
     });
+
+  //$("#new_card_submit").on("click", userCard() );
 })

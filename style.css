@@ -7,7 +7,7 @@ main {
   background: #4C4C4C;
   font-family: 'Raleway', sans-serif;
   padding: 30px;
-  max-width: 400px;
+  max-width: 420px;
   border: 3px solid #054970;
   border-radius: 20px;
   box-shadow: 5px 5px 5px #888888;
@@ -40,7 +40,6 @@ main {
   height: 180px;
   background: #D6D4BE;
   color: #4C4C4C;
-
 }
 
 #card_term {
@@ -51,6 +50,7 @@ main {
 }
 
 button {
+  margin: 5px;
   padding: 5px;
   border: 3px solid #054970;
   width: 165px;
@@ -68,5 +68,20 @@ button {
 #next_card_button {
   border-radius: 5px;
   margin-left: 5px;
-
 }
+
+/*.new_cards {
+  margin: 10px;
+  padding: 10px;
+  border-top: 2px solid #D6D4BE;
+  text-align: center;
+  color: #D6D4BE;
+}
+
+input, select, textarea{
+    color: #4C4C4C;
+}
+
+textarea:focus, input:focus {
+    color: #054970;
+}*/
