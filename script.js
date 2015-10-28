@@ -72,6 +72,8 @@ $(document).ready(function() {
       if ($("#userKnowsAnswer") === true) {
       currentArray.splice($.inArray(cardToRemove, currentArray), 1);
       }
+      //feedback: push current card to new array to temp remove
+      //  shift/ pop
     },
 
     // Move between cards
