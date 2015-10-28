@@ -53,6 +53,16 @@ $(document).ready(function() {
       //Silver Feature: be able to hide cardTerm when cardDefinition is displayed then toggle back and forth on each click.
     },
 
+//User click if they know a card. Remove card from rotation.
+    userCheckbox: function () {
+      if ($("#userKnowsAnswer").attr("checked")) {
+        $("#userConfirmKnows").show();
+        console.log("box is checked")
+      } else {
+        $("#userConfirmKnows").hide();
+      }
+    },
+
     // Move between cards
     previousButton: function() {
       $("#prev_card_button").on("click", function() {
@@ -114,6 +124,7 @@ $(document).ready(function() {
   cardDeck.cardUpdate();
   cardDeck.previousButton();
   cardDeck.nextButton();
+  cardDeck.userCheckbox();
 
   $("#card_face").on("click", function() {
     cardDeck.cardClick();
