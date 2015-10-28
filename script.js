@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  //used Constructor Function - was not able to pull a value from the object literal
+  //used Constructor Function
   function Card(term, definition) {
     this.termValue = term;
     this.definitionValue = definition;
@@ -22,7 +22,6 @@ $(document).ready(function() {
     cardTerm: $("#card_term"),
     cardDefinition: $("#card_definition"),
 
-    //Add a card
     cardAdd: function(term, definition) {
       this.cardArray.push(new Card(term, definition));
     },
@@ -36,7 +35,7 @@ $(document).ready(function() {
       this.cardPosition.html("Card " + (this.cardIndex + 1) + " of " + (this.cardArray.length));
     },
 
-    //Move through the cards -- Gold feature would be to randomize the order of the cards.
+    //Move through the cards -- Gold feature: randomize the order of the cards.
     cardNext: function(changeCard) {
       this.cardIndex += changeCard;
       if (this.cardIndex < 0) {
@@ -47,10 +46,10 @@ $(document).ready(function() {
       this.cardUpdate();
     },
 
+    //Clicking on the card -- Silver Feature: hide cardTerm when cardDefinition is displayed then toggle back and forth on each click.
     cardClick: function() {
       this.cardUpdate();
       this.cardDefinition.fadeToggle();
-      //Silver Feature: be able to hide cardTerm when cardDefinition is displayed then toggle back and forth on each click.
     },
 
     // Move between cards
@@ -77,9 +76,9 @@ $(document).ready(function() {
     }
   };
 
-  // My cards /////////////
-  //  cardDeck.cardAdd(" Term  "," Definition ");
-
+  // My cards -- Gold Feature: Store in a JSON file and create drop down option in app to select deck you would like to study.
+  //  Snippet to add new card -- cardDeck.cardAdd(" Term  "," Definition ");
+  ///////////////////////////
   cardDeck.cardAdd(".html()", "Getter and Setter. Get the HTML content for the first element in the set of matched elements. Set HTML content for every matched element.");
   cardDeck.cardAdd("*", "Selects all elements");
   cardDeck.cardAdd(".class", "Selects all elements with a specified class.");
@@ -100,30 +99,17 @@ $(document).ready(function() {
   cardDeck.cardAdd("event.target", "The \[target\] property can be the element that registered for the event or a descendent of it. Similar to \"this\", context is useful to determine if the event is being handled.");
   cardDeck.cardAdd(".keyup()", "Binds an event listener to the \"keyup\" Javascript event, or triggers that event on an element.");
   cardDeck.cardAdd(".hover()", "Binds an action to matched elements that is executed when the mouse pointer enters and leaves the elements.");
-
   ///////////////////////////
-
-  // function userCard() {
-  //   var newTerm = $("#new_term").val();
-  //   var newDefinition = $("#new_definition").val();
-  //   cardDeck.cardAdd(newTerm, newDefinition);
-  //   console.log(cardDeck.cardArray.length);
-  //   cardDeck.cardUpdate();
-  // };
 
   cardDeck.cardUpdate();
   cardDeck.previousButton();
   cardDeck.nextButton();
-
   $("#card_face").on("click", function() {
     cardDeck.cardClick();
   });
-
   $("body").keyup(function(evt) {
     if (evt.keyCode === 32) {
       cardDeck.cardClick();
     }
   });
-
-  //$("#new_card_submit").on("click", userCard());
 })
