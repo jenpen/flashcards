@@ -62,10 +62,16 @@ $(document).ready(function() {
     userCheckbox: function () {
       $("#userConfirmKnows").hide();
       $("#userKnowsAnswer").click(function () {
-        $("#userConfirmKnows").toggle(this.check);
-        //remove card from deck?
-        cardDeck.cardUpdate.currentCard.splice($.inArray(removeItem, cardDeck.cardUpdate.currentCard), 1);
+        ($("#userConfirmKnows").toggle(this.check));
       });
+    },
+
+    removeCard: function () {
+      var cardToRemove = cardDeck.cardUpdate.currentCard;
+      var currentArray = cardDeck.cardArray;
+      if ($("#userKnowsAnswer") === true) {
+      currentArray.splice($.inArray(cardToRemove, currentArray), 1);
+      }
     },
 
     // Move between cards
@@ -129,6 +135,7 @@ $(document).ready(function() {
   cardDeck.previousButton();
   cardDeck.nextButton();
   cardDeck.userCheckbox();
+  cardDeck.removeCard();
 
   $("#card_face").on("click", function() {
     cardDeck.cardClick();
