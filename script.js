@@ -45,6 +45,8 @@ $(document).ready(function() {
       this.cardIndex = this.cardIndex % this.cardArray.length;
       this.cardSide = 0;
       this.cardUpdate();
+      this.userCheckbox();
+      $("#userKnowsAnswer").attr("checked", false);
     },
 
     cardClick: function() {
@@ -53,14 +55,12 @@ $(document).ready(function() {
       //Silver Feature: be able to hide cardTerm when cardDefinition is displayed then toggle back and forth on each click.
     },
 
-//User click if they know a card. Remove card from rotation.
+    //User click if they know a card. Remove card from rotation.
     userCheckbox: function () {
-      if ($("#userKnowsAnswer").attr("checked")) {
-        $("#userConfirmKnows").show();
-        console.log("box is checked")
-      } else {
-        $("#userConfirmKnows").hide();
-      }
+      $("#userConfirmKnows").hide();
+      $("#userKnowsAnswer").click(function () {
+        $("#userConfirmKnows").toggle(this.check);
+      });
     },
 
     // Move between cards
