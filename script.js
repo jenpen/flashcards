@@ -72,8 +72,9 @@ $(document).ready(function() {
       if ($("#userKnowsAnswer") === true) {
       currentArray.splice($.inArray(cardToRemove, currentArray), 1);
       }
-      //feedback: push current card to new array to temp remove
-      //  shift/ pop
+      //feedback: push current card to new array to temp remove?
+      //  shift - removes first item in the array
+      //  pop - removes last item in the array
     },
 
     // Move between cards
@@ -125,13 +126,13 @@ $(document).ready(function() {
 
   ///////////////////////////
 
-  // function userCard() {
-  //   var newTerm = $("#new_term").val();
-  //   var newDefinition = $("#new_definition").val();
-  //   cardDeck.cardAdd(newTerm, newDefinition);
-  //   console.log(cardDeck.cardArray.length);
-  //   cardDeck.cardUpdate();
-  // };
+  function userCard() {
+    var newTerm = $("#new_term").val();
+    var newDefinition = $("#new_definition").val();
+    cardDeck.cardAdd(newTerm, newDefinition);
+    console.log(cardDeck.cardArray.length);
+    cardDeck.cardUpdate();
+  };
 
   cardDeck.cardUpdate();
   cardDeck.previousButton();
@@ -149,5 +150,9 @@ $(document).ready(function() {
     }
   });
 
-  //$("#new_card_submit").on("click", userCard());
+
+  $("#new_card_submit").on("click", userCard());
+
+  console.log(cardDeck.cardArray.length);
+  console.log(cardDeck.cardArray);
 })
