@@ -63,6 +63,8 @@ $(document).ready(function() {
       $("#userConfirmKnows").hide();
       $("#userKnowsAnswer").click(function () {
         $("#userConfirmKnows").toggle(this.check);
+        //remove card from deck?
+        cardDeck.cardUpdate.currentCard.splice($.inArray(removeItem, cardDeck.cardUpdate.currentCard), 1);
       });
     },
 
