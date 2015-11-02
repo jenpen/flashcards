@@ -1,6 +1,10 @@
 $(document).ready(function() {
 
   //used Constructor Function - was not able to pull a value from the object literal
+  // very cool, this is basically JS's version of Ruby classes.
+  // here something to think about: Is there a way we could create another constructor function that handles the DOM changes? maybe we could call it a cardView(). then we could do something like:
+  // var bob = cardView(someCard)
+  // bob.render()
   function Card(term, definition) {
     this.termValue = term;
     this.definitionValue = definition;
@@ -28,6 +32,7 @@ $(document).ready(function() {
     },
 
     //Create the card position within the index. Update the card counter.
+    // with this function you can see the sort of power that using Constructor functions can bring to the table.
     cardUpdate: function() {
       var currentCard = this.cardArray[this.cardIndex];
       this.cardTerm.text(currentCard.termValue);
@@ -37,6 +42,7 @@ $(document).ready(function() {
     },
 
     //Move through the cards -- Gold feature:  randomize the order of the cards.
+    //I think you could get a quick win implementing this feature.
     cardNext: function(changeCard) {
       this.cardIndex += changeCard;
       if (this.cardIndex < 0) {
@@ -49,6 +55,7 @@ $(document).ready(function() {
       $("#userKnowsAnswer").attr("checked", false);
     },
 
+    // are we naming the function to what event is executing or what the functionality of the method does.
     cardClick: function() {
       this.cardUpdate();
       this.cardDefinition.fadeToggle();
@@ -73,6 +80,7 @@ $(document).ready(function() {
       currentArray.splice($.inArray(cardToRemove, currentArray), 1);
       }
       //feedback: push current card to new array to temp remove?
+      // think its up to you, whether you need access to it, or if its gone moving forward in your application.
       //  shift - removes first item in the array
       //  pop - removes last item in the array
     },
@@ -102,6 +110,8 @@ $(document).ready(function() {
   };
 
   // My cards /////////////
+
+  // Theres a bunch of different ways we can seed data into our applications that you'll find effective throughout your career. My recommendation for this data set is to create an array of object literals. Loop through those to create your card objects. Separates concerns just a bit better
   //  cardDeck.cardAdd(" Term  "," Definition ");
   cardDeck.cardAdd(".html()", "Getter and Setter. Get the HTML content for the first element in the set of matched elements. Set HTML content for every matched element.");
   cardDeck.cardAdd("*", "Selects all elements");
@@ -133,7 +143,8 @@ $(document).ready(function() {
     console.log(cardDeck.cardArray.length);
     cardDeck.cardUpdate();
   };
-
+// I always hesitate when i call a function that adds an event listener. I'm scare it'll be used again and i'll get timerJS nightmares. It's not wrong to do it the way you are doing. In fact it may be better to encapsulate it.
+// I guess the hesitation is that it doesn't need to be abstracted if its never going to be used more than once. When we call nextButton, I'm saying add an event listener. It's kind of like a higher order function in that it speaks more like english.
   cardDeck.cardUpdate();
   cardDeck.previousButton();
   cardDeck.nextButton();
